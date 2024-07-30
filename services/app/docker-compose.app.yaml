@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  cda-datasets-webhook:
+    build:
+      context: ./services/app
+      dockerfile: Dockerfile
+    hostname: cda-datasets-webhook
+    volumes: python_data:/app 
+    ports:
+      - "5011:5011"
+    networks:
+      - app_network
+
+volumes:
+  python_data:
+
+networks:
+  app_network:
+    driver: overlay
